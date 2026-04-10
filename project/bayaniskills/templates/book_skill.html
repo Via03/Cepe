@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Skill</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        /* NAVBAR */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* CONTAINER */
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 16px;
+            width: 350px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #94a3b8;
+        }
+
+        .price {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #22c55e;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #16a34a;
+        }
+
+        .back {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+    <div class="logo">
+        <img src="{% static 'images/logo.jpeg' %}">
+        Bayaniskills
+    </div>
+</div>
+
+<!-- FORM -->
+<div class="wrapper">
+    <div class="card">
+        <h2>{{ skill.name }}</h2>
+        <p>{{ skill.description }}</p>
+        <p class="price">₱{{ skill.rate }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Select Date & Time</label>
+            <input type="datetime-local" name="date" required>
+
+            <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+
+        <a href="{% url 'skill_list' %}" class="back">← Back</a>
+    </div>
+</div>
+
+</body>
+</html>

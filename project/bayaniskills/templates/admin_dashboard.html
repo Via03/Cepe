@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 16px;
+            width: 350px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .stat {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Admin Dashboard</h2>
+
+    <div class="stat">Users: {{ users.count }}</div>
+    <div class="stat">Skills: {{ skills.count }}</div>
+    <div class="stat">Bookings: {{ bookings.count }}</div>
+</div>
+
+</body>
+</html>

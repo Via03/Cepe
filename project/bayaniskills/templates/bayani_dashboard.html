@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bayani Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 16px;
+            width: 450px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        .item {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>My Skills</h2>
+    {% for skill in skills %}
+        <div class="item">
+            {{ skill.name }} - ₱{{ skill.rate }}
+        </div>
+    {% endfor %}
+
+    <h2>Bookings</h2>
+    {% for booking in bookings %}
+        <div class="item">
+            {{ booking.client }} → {{ booking.skill.name }}<br>
+            Status: {{ booking.status }}
+        </div>
+    {% empty %}
+        <p>No bookings yet.</p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
